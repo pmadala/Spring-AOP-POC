@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!-- Enable AspectJ style of Spring AOP -->
+<aop:aspectj-autoproxy />
+
+<bean name="word" class="org.SpringAOP.spring.model.Word">
+	<property name="value" value="Dummy value"></property>
+</bean>
+
+<bean name="wordService" class="org.SpringAOP.spring.service.WordService">
+	<property name="word" value="word"></property>
+</bean>
+
+
+<!-- Configure Aspect Beans, without this Aspects advices wont execute -->
+<bean name="wordAspect" class="org.SpringAOP.spring.aspect.WordAspect" />
+<bean name="wordAspectPointcut" class="org.SpringAOP.spring.aspect.WordAspectPointcut" />
+<bean name="wordAspectJoinPoint" class="org.SpringAOP.spring.aspect.WordAspectJoinPoint" />
+<bean name="wordAfterAspect" class="org.SpringAOP.spring.aspect.WordAfterAspect" />
+<bean name="wordAroundAspect" class="org.SpringAOP.spring.aspect.WordAroundAspect" />
+<bean name="wordAnnotationAspect" class="org.SpringAOP.spring.aspect.WordAnnotationAspect" />
+
+</beans>
